@@ -12,6 +12,31 @@
 5. set：集合，适用于存在大量的高效查询操作的案例。   
 
 
+###11.5：解释map和set的区别。
+> map是键值对，set只是一个集合，如果仅仅只需要存储一个关键字的话，那么使用set，如果需要存储一个关键字及其对应的值那么使用map。
+
+
+###11.6：解释set和list的区别。
+> list是一个双向链表，它可以存储不同值的元素，且元素之间无序，而set是一个有序的且不能存储相同值的集合。
+
+
+###11.9：定义一个map，将单词与一个保存行号的list关联，list中保存的是单词所出现的行号。
+```C++
+map<string, list<int>> words;
+```
+
+
+###11.10：可以定义一个vector<int>::iterator到int的map吗？list<int>::iterator到int的map呢？能或不能，给予解释。
+```C++
+map<vector<int>::iterator, int>  m1;                 //可以，因为vector<int>::iterator有比较运算
+map<list<int>::iterator, int> m2;                    //不可以，因为list<int>::iterator没有比较运算，声明不提示错误，一旦插入元素就会提示错误。
+```
+
+
+###11.11：不使用decltype重新定义bookstore.
+```C++
+multiset<Sales_data, bool (*) (const Sales_data &, const Sales_data&) >  bookstore(compareIsbn);
+```
 
 
 
