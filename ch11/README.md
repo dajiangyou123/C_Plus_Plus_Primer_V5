@@ -39,6 +39,39 @@ multiset<Sales_data, bool (*) (const Sales_data &, const Sales_data&) >  booksto
 ```
 
 
+###11.15: 对一个int到vector<int>的map，其mapped_type、key_type和value_type分别是什么？
+> mapped_type是vector<int>，key_type是int,value_type是pair<const int, vector<int>>.
 
+
+###11.16: 使用一个map迭代器编写一个表达式，将一个值赋予一个元素。
+```C++
+map<int, int> m = {{1,2}};
+map<int, int>::iterator it = m.begin();
+it->second = 3;                 //将3赋给了map中的首元素。
+```
+
+###11.17: c是string都得multi,v是string的vector。
+```C++
+copy(v.begin(), v.end(), inserter(c,c.end()));                 //合法，set有insert
+copy(v.begin(), v.end(), back_inserter(c));                    //不合法，set没有push_back
+```
+
+###11.18: map<string, int>的迭代器类型。
+```C++
+map<string, int>::iterator
+```
+
+
+###11.19: 写出P379中名为bookstore的迭代器类型。
+```C++
+multiset<Sales_data,boole (*)(const Sales_data &, const Sales_data &) > ::iterator;
+```
+
+
+###11.22: 写出map<string, vector<int>>的insert版本的参考类型和返回值。
+```C++
+map<string, vector<int>> m;
+pair< map<string, vector<int>>::iterator, bool>  ret = m.insert({"abc", {1,2,3}});    //参数类型是pair<string, vector<int>>
+```
 
 
