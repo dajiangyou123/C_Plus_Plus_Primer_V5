@@ -1,5 +1,5 @@
 Programs = folder_message strvec_test
-CXXFLAGS = '-std=c++11'
+CXXFLAGS = -g -std=c++11
 
 all: $(Programs)
 

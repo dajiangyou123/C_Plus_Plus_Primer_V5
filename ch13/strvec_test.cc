@@ -8,7 +8,7 @@ int main()
 	vec.push_back("efg");
 	
 
-	StrVec vec1;
+	StrVec vec1{"str","vector"};
 	vec1.push_back("a");
 	vec1.push_back("b");
 	for(auto i : vec)

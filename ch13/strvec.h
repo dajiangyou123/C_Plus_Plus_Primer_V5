@@ -3,6 +3,7 @@
 
 #include <string>
 #include <memory>
+#include <initializer_list>
 #include <utility>
 
 //实现简易的vector
@@ -13,16 +14,21 @@ public:
 	StrVec(): elements(nullptr), first_free(nullptr), cap(nullptr) { }    //默认初始化
 	StrVec(const StrVec&);    //拷贝构造函数
 	StrVec &operator=(const StrVec&);        //拷贝赋值运算符
+	StrVec(std::initializer_list<std::string>);  //列表初始化
 	~StrVec();				//析构函数
 	void push_back(const std::string&);		//添加元素到StrVec中
 	size_t size() const { return first_free - elements; }     //StrVec中存储的元素数量
 	size_t capacity() const { return cap - elements; }        //StrVec总空间大小
 	std::string *begin() const { return elements; }			 //首元素地址
 	std::string *end() const { return first_free; }			 //尾后元素地址
+	void reserve(size_t);    //分配至少能容纳给定参数个的内存空间
+	void resize(size_t);	//调整存储的数量为给定参数
 
 
 private:
 	static std::allocator<std::string> alloc;   //分配元素
+
+	void allocate_n(size_t);	//分配指定参数的空间
 
 	//添加元素时保证空间足够
 	void chk_n_alloc()
