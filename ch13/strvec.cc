@@ -116,11 +116,8 @@ void StrVec::resize(size_t n)
 	}
 }
 
-StrVec::StrVec(initializer_list<string> il)
+StrVec::StrVec(initializer_list<string> il): elements(nullptr), first_free(nullptr), cap(nullptr)
 {
-	elements = nullptr;
-	first_free = nullptr;
-	cap = nullptr;
 	for(const auto &s : il)
 	{
 		push_back(s);
