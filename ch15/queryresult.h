@@ -9,6 +9,7 @@
 #include <set>
 #include <fstream>
 #include <sstream>
+#include <iterator>
 
 using std::string;
 using std::vector;
@@ -22,6 +23,20 @@ class QueryResult
 friend std::ostream& print(std::ostream&, const QueryResult&);
 public:
 	QueryResult(string s, shared_ptr<set<TextQuery::line_no>> p, shared_ptr<vector<string>> f) : sought(s), lines(p), file(f) {}
+	set<TextQuery::line_no>::iterator begin()  const
+	{
+		return lines->begin();
+	}
+
+	set<TextQuery::line_no>::iterator end() const
+	{
+		return lines->end();
+	}
+
+	shared_ptr<vector<string>> get_file() const
+	{
+		return file;
+	}
 
 private:
 	string sought;           //查询单词
